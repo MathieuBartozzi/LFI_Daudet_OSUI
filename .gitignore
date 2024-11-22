@@ -2,4 +2,6 @@
 !streamlit/
 !streamlit/pages/
 !streamlit/pages/*
+!streamlit/data_app/
+!streamlit/data_app/*
 !.gitignore
