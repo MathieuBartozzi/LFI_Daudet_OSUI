@@ -10,7 +10,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
 
-st.logo('logo.jpg')
+# st.logo('logo.jpg')
 
 ##### CHARGEMENT DES DONNÉES ######
 

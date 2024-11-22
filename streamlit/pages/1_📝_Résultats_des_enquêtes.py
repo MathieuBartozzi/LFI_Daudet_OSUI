@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 # directory_path = 'data_app'
 
-st.logo('logo.jpg')
+# st.logo('logo.jpg')
 
 
 @st.cache_data
