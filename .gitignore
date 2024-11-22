@@ -1,0 +1,5 @@
+*
+!streamlit/
+!streamlit/pages/
+!streamlit/pages/*
+!.gitignore
