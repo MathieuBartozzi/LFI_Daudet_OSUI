@@ -10,7 +10,39 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
 
-# st.logo('logo.jpg')
+@st.cache_data
+def load_logo():
+    """
+    Fonction pour charger le logo, quel que soit le chemin de la sous-page.
+    """
+    import os
+
+    # Obtenir le chemin absolu de la sous-page en cours d'exécution
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Remonter au dossier racine "streamlit"
+    parent_dir = os.path.dirname(current_dir)
+
+    # Construire le chemin vers le logo
+    logo_path = os.path.join(parent_dir, "logo.jpg")
+
+    # Vérifier si le fichier existe et retourner le chemin
+    if os.path.exists(logo_path):
+        return logo_path
+    else:
+        st.warning(f"Le fichier logo '{logo_path}' est introuvable.")
+        return None
+
+# Charger le logo
+logo_path = load_logo()
+
+# Afficher le logo si disponible
+if logo_path:
+    st.logo(logo_path)
+else:
+    st.warning("Le logo n'a pas pu être chargé.")
+
+
 
 ##### CHARGEMENT DES DONNÉES ######
 
