@@ -7,39 +7,63 @@ st.set_page_config(
 
 # st.sidebar.success("Selectionner une page.")
 
-# st.logo('logo.jpg')
+import streamlit as st
+import os
 
+# Chemin des fichiers
+logo_path = "logo.jpg"
+image_path = "image_daudet.jpeg"
 
-# # Titre de l'application
-# col1, col2=st.columns([2,1])
-# with col1:
-#     st.title("Audit LFIAD 2024 : Analyse des résultats et enquêtes")
-#     st.markdown("""
-# Dans le cadre de notre **analyse des performances pédagogiques** au **LFIAD**, nous avons collecté et croisé plusieurs sources de données :
-# - Les informations issues de **Pronote** (base 2023-2024).
-# - Les résultats des **enquêtes individuelles**.
-# - Les échanges et conclusions des **réunions d'équipes** organisées à la fin du mois de septembre 2024.
+# Chemins des fichiers
+logo_path = "logo.jpg"
+image_path = "image_daudet.jpeg"
 
-# Ce document vous présente une **synthèse** de ce travail, ainsi que des **pistes de réflexion** pour renforcer les pratiques pédagogiques.
-# """)
+# Bloc try pour gérer le logo et l'image
+try:
+    # Vérifier si le logo existe et l'afficher
+    if os.path.exists(logo_path):
+        st.logo(logo_path)
 
-# with col2:
-#     st.image("image_daudet.jpeg",width=400)
+    # Vérifier si l'image existe
+    if os.path.exists(image_path):
+        # Deux colonnes si l'image est disponible
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            st.title("Audit LFIAD 2024 : Analyse des résultats et enquêtes")
+            st.markdown("""
+            Dans le cadre de notre **analyse des performances pédagogiques** au **LFIAD**, nous avons collecté et croisé plusieurs sources de données :
+            - Les informations issues de **Pronote** (base 2023-2024).
+            - Les résultats des **enquêtes individuelles**.
+            - Les échanges et conclusions des **réunions d'équipes** organisées à la fin du mois de septembre 2024.
 
+            Ce document vous présente une **synthèse** de ce travail, ainsi que des **pistes de réflexion** pour renforcer les pratiques pédagogiques.
+            """)
+        with col2:
+            st.image(image_path, width=400)
+    else:
+        # Organisation normale avec une seule colonne si l'image n'est pas disponible
+        st.title("Audit LFIAD 2024 : Analyse des résultats et enquêtes")
+        st.markdown("""
+        Dans le cadre de notre **analyse des performances pédagogiques** au **LFIAD**, nous avons collecté et croisé plusieurs sources de données :
+        - Les informations issues de **Pronote** (base 2023-2024).
+        - Les résultats des **enquêtes individuelles**.
+        - Les échanges et conclusions des **réunions d'équipes** organisées à la fin du mois de septembre 2024.
 
-# Introduction
+        Ce document vous présente une **synthèse** de ce travail, ainsi que des **pistes de réflexion** pour renforcer les pratiques pédagogiques.
+        """)
 
-st.title("Audit LFIAD 2024 : Analyse des résultats et enquêtes")
+except Exception as e:
+    # Gestion des erreurs
+    st.warning("Une erreur s'est produite lors du chargement des fichiers.")
+    st.title("Audit LFIAD 2024 : Analyse des résultats et enquêtes")
+    st.markdown("""
+    Dans le cadre de notre **analyse des performances pédagogiques** au **LFIAD**, nous avons collecté et croisé plusieurs sources de données :
+    - Les informations issues de **Pronote** (base 2023-2024).
+    - Les résultats des **enquêtes individuelles**.
+    - Les échanges et conclusions des **réunions d'équipes** organisées à la fin du mois de septembre 2024.
 
-st.markdown("""
-Dans le cadre de notre **analyse des performances pédagogiques** au **LFIAD**, nous avons collecté et croisé plusieurs sources de données :
-- Les informations issues de **Pronote** (base 2023-2024).
-- Les résultats des **enquêtes individuelles**.
-- Les échanges et conclusions des **réunions d'équipes** organisées à la fin du mois de septembre 2024.
-
-Ce document vous présente une **synthèse** de ce travail, ainsi que des **pistes de réflexion** pour renforcer les pratiques pédagogiques.
-""")
-
+    Ce document vous présente une **synthèse** de ce travail, ainsi que des **pistes de réflexion** pour renforcer les pratiques pédagogiques.
+    """)
 
 
 st.markdown("""

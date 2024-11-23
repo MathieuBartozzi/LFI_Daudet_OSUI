@@ -4,7 +4,6 @@ import plotly.express as px
 import os
 import plotly.graph_objects as go
 
-# directory_path = 'data_app'
 
 # st.logo('logo.jpg')
 
