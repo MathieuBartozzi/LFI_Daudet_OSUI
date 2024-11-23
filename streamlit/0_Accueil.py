@@ -7,41 +7,43 @@ st.set_page_config(
 
 # st.sidebar.success("Selectionner une page.")
 
-import streamlit as st
 import os
+from PIL import Image
 
-# Chemin des fichiers
-logo_path = "logo.jpg"
-image_path = "image_daudet.jpeg"
+import os
+import streamlit as st
+from PIL import Image
 
-# Chemins des fichiers
-logo_path = "logo.jpg"
-image_path = "image_daudet.jpeg"
+# Fonction pour charger les images
+@st.cache_data
+def load_images():
+    # Obtenir le chemin absolu du fichier courant
+    current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Bloc try pour gérer le logo et l'image
-try:
-    # Vérifier si le logo existe et l'afficher
-    if os.path.exists(logo_path):
-        st.logo(logo_path)
+    # Construire les chemins vers les images
+    logo_path = os.path.join(current_dir, "logo.jpg")
+    image_path = os.path.join(current_dir, "image_daudet.jpeg")
 
-    # Vérifier si l'image existe
-    if os.path.exists(image_path):
-        # Deux colonnes si l'image est disponible
-        col1, col2 = st.columns([2, 1])
-        with col1:
-            st.title("Audit LFIAD 2024 : Analyse des résultats et enquêtes")
-            st.markdown("""
-            Dans le cadre de notre **analyse des performances pédagogiques** au **LFIAD**, nous avons collecté et croisé plusieurs sources de données :
-            - Les informations issues de **Pronote** (base 2023-2024).
-            - Les résultats des **enquêtes individuelles**.
-            - Les échanges et conclusions des **réunions d'équipes** organisées à la fin du mois de septembre 2024.
+    # Charger les images si elles existent
+    logo_image = Image.open(logo_path) if os.path.exists(logo_path) else None
+    daudet_image = Image.open(image_path) if os.path.exists(image_path) else None
 
-            Ce document vous présente une **synthèse** de ce travail, ainsi que des **pistes de réflexion** pour renforcer les pratiques pédagogiques.
-            """)
-        with col2:
-            st.image(image_path, width=400)
-    else:
-        # Organisation normale avec une seule colonne si l'image n'est pas disponible
+    return logo_image, daudet_image
+
+# Appel de la fonction pour charger les images
+logo_image, daudet_image = load_images()
+
+# Affichage du logo
+if logo_image:
+    st.logo(logo_image)
+else:
+    st.warning("Le logo n'a pas pu être chargé.")
+
+# Affichage du contenu principal
+if daudet_image:
+    # Deux colonnes si l'image Daudet est disponible
+    col1, col2 = st.columns([2, 1])
+    with col1:
         st.title("Audit LFIAD 2024 : Analyse des résultats et enquêtes")
         st.markdown("""
         Dans le cadre de notre **analyse des performances pédagogiques** au **LFIAD**, nous avons collecté et croisé plusieurs sources de données :
@@ -51,10 +53,10 @@ try:
 
         Ce document vous présente une **synthèse** de ce travail, ainsi que des **pistes de réflexion** pour renforcer les pratiques pédagogiques.
         """)
-
-except Exception as e:
-    # Gestion des erreurs
-    st.warning("Une erreur s'est produite lors du chargement des fichiers.")
+    with col2:
+        st.image(daudet_image, width=400)
+else:
+    # Organisation normale avec une seule colonne si l'image Daudet n'est pas disponible
     st.title("Audit LFIAD 2024 : Analyse des résultats et enquêtes")
     st.markdown("""
     Dans le cadre de notre **analyse des performances pédagogiques** au **LFIAD**, nous avons collecté et croisé plusieurs sources de données :
@@ -64,6 +66,7 @@ except Exception as e:
 
     Ce document vous présente une **synthèse** de ce travail, ainsi que des **pistes de réflexion** pour renforcer les pratiques pédagogiques.
     """)
+
 
 
 st.markdown("""
