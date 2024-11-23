@@ -627,16 +627,18 @@ Une meilleure collaboaration entre les équipes pédagogies pourrait constituer 
         'Top Garçons': top_garcons['matiere'].values
     })
 
-    # Afficher dans Streamlit
-    col1, col2 =st.columns([1,2])
-    with col1:
-        st.write("")
-        st.write("**Top des matières par genre**")
-        st.dataframe(top_8_table)
+    st.plotly_chart(fig, use_container_width=True)
 
-    # Afficher les résultats dans Streamlit
-    with col2:
-        st.plotly_chart(fig, use_container_width=True)
+    # # Afficher dans Streamlit
+    # col1, col2 =st.columns([1,2])
+    # with col1:
+    #     st.write("")
+    #     st.write("**Top des matières par genre**")
+    #     st.dataframe(top_8_table)
+
+    # # Afficher les résultats dans Streamlit
+    # with col2:
+    #     st.plotly_chart(fig, use_container_width=True)
 
 
     with st.container(border=True):
@@ -645,7 +647,7 @@ Une meilleure collaboaration entre les équipes pédagogies pourrait constituer 
 
         **Pistes d'Action :**
         - Renforcer le suivi des garçons, notamment dans les matières où ils rencontrent des difficultés.
-        - Encourager les filles à consolider leurs performances dans le matières scientifique, tout en valorisant leurs forces en langues.
+        - Encourager les filles à consolider leurs performances dans les matières scientifique, tout en valorisant leurs forces en langues.
         - Mettre en place des approches pédagogiques différenciées pour réduire les écarts de performance et favoriser une réussite équilibrée.
         """)
 

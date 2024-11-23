@@ -76,7 +76,7 @@ with tab1:
     st.markdown("""
     **1 - Usage du numérique**
 
-    L'usage du numérique semble être bien intégré dans la majorité des matières, avec une moyenne d'utilisation globalement élevée (entre 3,5 et 5). Le Tableau Blanc Interactif (TBI), ainsi que des plateformes comme Pronote, sont les outils numériques les plus fréquemment utilisés et cités comme essentiels pour rendre les cours plus interactifs et engageants. Cependant, il existe une disparité dans la maîtrise des outils selon les matières. Les équipes des matières scientifiques et des langues semblent particulièrement à l'aise avec ces technologies, tandis que certaines équipes des cycles du primaire notent encore des lacunes dans l'exploitation complète des outils numériques.
+    L'usage du numérique semble être bien intégré dans la majorité des matières, avec une moyenne d'utilisation globalement élevée (entre 3,5 et 5). Le Tableau Blanc Interactif (TBI), ainsi que des plateformes comme Pronote, sont les outils numériques les plus fréquemment utilisés et cités comme essentiels pour rendre les cours plus interactifs et engageants. Cependant, il existe une disparité dans la maîtrise des outils selon les matières. Les équipes des matières scientifiques et des langues semblent particulièrement à l'aise avec ces technologies, tandis que les équipes du primaire soulignent ou reconnaissent la possibilité d'une utilisation plus approfondie du numérique.
 
     👉 **Points à retenir**
     - Continuer de soutenir et de développer les compétences numériques des enseignants dans certaines disciplines (notamment dans le primaire).
@@ -96,10 +96,10 @@ with tab1:
 
     **3 - Collaboration**
 
-    Le niveau de collaboration entre enseignants varie fortement entre les matières. Certaines équipes, comme celles des langues et des sciences humaines, ont mis en place des projets interdisciplinaires qui encouragent les échanges (par exemple, autour de thèmes comme l'esclavage en histoire et anglais). D'autres équipes, particulièrement dans les matières plus techniques ou individuelles (comme la philosophie), éprouvent plus de difficultés à collaborer régulièrement. Il est souvent mentionné que la mise en place de plateformes de partage et de coordination serait bénéfique pour renforcer la collaboration.
+    Le niveau de collaboration entre enseignants varie fortement entre les matières. Certaines équipes ont mis en place des projets interdisciplinaires qui encouragent les échanges (par exemple, autour de thèmes comme l'esclavage en histoire et anglais). D'autres équipes, particulièrement dans les matières plus techniques ou individuelles (comme la philosophie), éprouvent plus de difficultés à collaborer régulièrement. Il est souvent mentionné que la mise en place de plateformes de partage et de coordination serait bénéfique pour renforcer la collaboration.
 
     👉 **Points à retenir**
-    - Promouvoir davantage de projets inter-matières qui encouragent la coopération pédagogique.
+    - Promouvoir davantage de projets pluridisciplinaires qui encouragent la coopération pédagogique.
     - Mettre en place des outils et des plateformes pour faciliter la collaboration, en particulier dans les matières plus isolées (comme les matières littéraires ou les disciplines artistiques).
 
     ---
