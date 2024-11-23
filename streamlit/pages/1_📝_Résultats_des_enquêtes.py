@@ -4,9 +4,9 @@ import plotly.express as px
 import os
 import plotly.graph_objects as go
 
-
-# st.logo('logo.jpg')
-
+if "logged_in" not in st.session_state or not st.session_state.logged_in:
+    st.error("Vous devez vous connecter sur la page **Accueil** dans le menu latéral.")
+    st.stop()
 
 @st.cache_data
 def load_data():

@@ -9,6 +9,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
+if "logged_in" not in st.session_state or not st.session_state.logged_in:
+    st.error("Vous devez vous connecter sur la page **Accueil** dans le menu latéral.")
+    st.stop()
 
 @st.cache_data
 def load_logo():
