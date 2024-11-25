@@ -98,6 +98,88 @@ else:
         Ce document vous présente une **synthèse** de ce travail, ainsi que des **pistes de réflexion** pour renforcer les pratiques pédagogiques.
         """)
 
+    with st.popover("**Utilisation des données** : méthodologie et limites"):
+        st.markdown("""
+
+### 1. Grandes étapes de la méthodologie et du code
+
+L’analyse des données pédagogiques au LFIAD a suivi une méthodologie rigoureuse, mise en œuvre à travers plusieurs étapes clés :
+
+1. **Extraction des données**
+   - Les données ont été exportées depuis **Pronote** pour l’année 2023-2024 sous forme de fichiers CSV.
+   - Toutefois, les résultats des évaluations par compétences pour les classes de **6e, 5e et 4e** n’ont pas pu être inclus en raison de la structuration insuffisante des données dans Pronote.
+
+2. **Anonymisation**
+   - Toutes les données personnelles (noms, prénoms) ont été remplacées par des **identifiants uniques** pour respecter le RGPD :
+     - Les élèves sont identifiés par un champ `eleve_id`.
+     - Les professeurs sont identifiés par un champ `prof_id`.
+   - Les fichiers anonymisés sont irréversibles et séparés des fichiers de réidentification réservés à une vérification restreinte.
+
+3. **Nettoyage et structuration des données**
+   - **Normalisation des colonnes** : formatage des dates, coefficients et notes.
+   - **Uniformisation des matières** : noms standardisés pour faciliter l’analyse (ex. : "ARABE LV SECTION" → "Arabe").
+   - **Traitement des valeurs manquantes et doublons**, avec catégorisation par niveau (ex. : "collège" pour les niveaux inclus).
+
+4. **Analyse et modélisation**
+   - **Clustering (KNN)** : segmentation des élèves selon leurs performances et comportements.
+   - **Sentiment analysis (VADER)** : évaluation des appréciations des professeurs.
+   - **Scoring avancé (GPT-4o Mini)** : extraction d’indicateurs sur le travail, le comportement et l’engagement des élèves.
+
+5. **Visualisation**
+   - Une application **Streamlit sécurisée** (voir Section 3) a été développée pour offrir des tableaux de bord dynamiques.
+   - Les visualisations incluent :
+     - Profils d’élèves croisés (moyennes, retards, punitions, etc.).
+     - Répartition des notes par matières et genres.
+     - Analyse des appréciations et corrélations avec les performances académiques.
+
+---
+
+### 2. Données publiques
+
+Un sous-ensemble des données, nettoyées et anonymisées, est disponible sur [un dépôt GitHub](https://github.com/MathieuBartozzi/LFI_Daudet_OSUI).
+- Ce dépôt contient :
+  - Les fichiers anonymisés utilisés dans l’application.
+  - Les scripts Python utilisés pour l’anonymisation, le nettoyage et les analyses.
+  - Un guide de reproduction des analyses et des visualisations.
+
+---
+
+### 3. Sécurisation de l’application
+
+L'application Streamlit a été conçue avec une attention particulière à la sécurité :
+- **Accès restreint** : réservé aux utilisateurs disposant d’une adresse e-mail **@mlfmonde.org** et d’un mot de passe unique.
+- **Données anonymisées** : seules les informations strictement nécessaires aux analyses sont intégrées dans l'application.
+- **Fichiers de réidentification** : conservés séparément, non accessibles depuis l’application.
+- **Journalisation des accès** : pour surveiller et limiter les utilisations abusives.
+
+---
+
+### 4. Limites et vigilances
+
+Malgré le soin apporté à cette analyse, plusieurs limites doivent être prises en compte :
+
+1. **Qualité et véracité des données**
+   - Les données exportées depuis Pronote peuvent contenir des erreurs ou être incomplètes, notamment pour les évaluations par compétences des classes de **6e, 5e et 4e**, qui ne sont pas intégrées.
+   - Les informations issues de Pronote nécessitent parfois une validation manuelle ou des corrections préalables.
+
+2. **Travail et méthodologie perfectibles**
+   - Bien que la méthodologie suive des standards rigoureux, certaines étapes peuvent comporter des imperfections, comme des biais introduits lors du nettoyage ou du clustering.
+   - Les choix de paramètres dans les modèles (par ex. : nombre de clusters pour KNN) peuvent affecter les résultats.
+
+3. **Limites des modèles utilisés**
+   - **VADER** : Performant pour des phrases simples, il peut mal interpréter des appréciations complexes ou nuancées.
+   - **GPT-4o Mini** : Bien qu’efficace, il peut manquer de sensibilité face à des textes ambigus ou atypiques. Une adaptation plus fine aux contextes éducatifs serait nécessaire.
+
+---
+
+### 5. Conclusion
+
+Ce projet a permis de développer un cadre rigoureux pour l’analyse des données pédagogiques, tout en respectant le RGPD. L’application fournit des informations utiles pour le pilotage pédagogique, mais il est important de considérer les limites mentionnées pour interpréter les résultats de manière éclairée.
+
+
+                    """)
+
+
 
 
     st.markdown("""
