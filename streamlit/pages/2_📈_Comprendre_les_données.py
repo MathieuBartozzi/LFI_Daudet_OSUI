@@ -106,7 +106,7 @@ with tab1 :
     # Create subplots for each event type, displayed in two columns
     fig_freq = sp.make_subplots(
         rows=2, cols=2,
-        shared_xaxes=True,
+        shared_xaxes=False,
         subplot_titles=(
             "Absences",
             "Infirmerie",
@@ -154,8 +154,9 @@ with tab1 :
     )
 
     # Set x-axis titles
-    fig_freq.update_xaxes(title_text="Date", row=2, col=1)
-    fig_freq.update_xaxes(title_text="Date", row=2, col=2)
+    # fig_freq.update_xaxes(title_text="Date", row=2, col=1)
+    # fig_freq.update_xaxes(title_text="Date", row=2, col=2)
+
 
     # Adjust y-axis titles (optional)
     fig_freq.update_yaxes(title_text=None, row=1, col=1)
@@ -169,7 +170,7 @@ with tab1 :
 
     with st.container(border=True):
         st.write("""
-            1. Les absences augmentent en fin de trimestre, avec un pic notable en fin d'année.
+            1. Les absences augmentent en fin de période, avec un pic notable en fin d'année.
             2. Les passages à l'infirmerie restent constants tout au long de l'année.
             3. Lors des périodes 1, 2 et 3, les punitions atteignent un pic en fin de période, indiquant probablement une fatigue des élèves et des équipes. Sur la dernière période, le pic se situe plutôt au début, coïncidant avec une forte hausse des absences sur cette même période.
         """)
@@ -346,9 +347,25 @@ with tab1 :
         fig_corr.add_trace(trace, row=2, col=3)
 
     # Modifier le layout pour tous les scatter plots dans fig_corr
-    fig_corr.update_layout(height=800,width=1000, template="plotly_white")
+    fig_corr.update_layout(height=800,width=1500, template="plotly_white")
+    # Mise à jour des titres spécifiques pour chaque sous-tracé
+    fig_corr.update_xaxes(title_text="Nb absences", row=1, col=1)
+    fig_corr.update_yaxes(title_text="Moyenne Annuelle", row=1, col=1)
 
+    fig_corr.update_xaxes(title_text="Nb Retards", row=1, col=2)
+    fig_corr.update_yaxes(title_text="Moyenne Annuelle", row=1, col=2)
 
+    fig_corr.update_xaxes(title_text="Nb Punitions", row=1, col=3)
+    fig_corr.update_yaxes(title_text="Moyenne Annuelle", row=1, col=3)
+
+    fig_corr.update_xaxes(title_text="Nb Absences", row=2, col=1)
+    fig_corr.update_yaxes(title_text="Nb Retards", row=2, col=1)
+
+    fig_corr.update_xaxes(title_text="Nb Absences", row=2, col=2)
+    fig_corr.update_yaxes(title_text="Mb Punitions", row=2, col=2)
+
+    fig_corr.update_xaxes(title_text="Nb Retards", row=2, col=3)
+    fig_corr.update_yaxes(title_text="Nb Punitions", row=2, col=3)
 
     # Affichage dans Streamlit
     st.plotly_chart(fig_corr)
@@ -536,7 +553,7 @@ Une meilleure collaboaration entre les équipes pédagogies pourrait constituer 
         below_median,
         x='sexe',
         y='count',
-        title=f"Élèves avec moyennes < médiane (~{median_note:.2f})",
+        title=f" Moyennes < médiane (~{median_note:.2f})",
         labels={'sexe': 'Genre', 'count': 'Nombre de notes'},
         color='sexe',
         text='count',
@@ -549,7 +566,7 @@ Une meilleure collaboaration entre les équipes pédagogies pourrait constituer 
         above_median,
         x='sexe',
         y='count',
-        title=f"Élèves avec moyennes ≥ médiane (~{median_note:.2f})",
+        title=f"Moyennes ≥ médiane (~{median_note:.2f})",
         labels={'sexe': 'Genre', 'count': 'Nombre de notes'},
         color='sexe',
         text='count',
@@ -831,7 +848,7 @@ Une meilleure collaboaration entre les équipes pédagogies pourrait constituer 
             title="Décrochages par genre et matière",
             labels={'nombre_de_décrochages': 'Nombre de Décrochages', 'matiere': 'Matière', 'sexe': 'Sexe'},
             barmode='group',
-            color_discrete_sequence=couleurs_filles_garcons
+            color_discrete_sequence=[px.colors.qualitative.G10[3], px.colors.qualitative.G10[2]]
         )
         st.plotly_chart(fig, use_container_width=True)
 
