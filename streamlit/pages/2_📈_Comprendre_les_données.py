@@ -544,7 +544,8 @@ Une meilleure collaboaration entre les équipes pédagogies pourrait constituer 
         labels={'note_sur_20': 'Notes sur 20', 'sexe': 'Genre'},
         barmode='overlay',
         opacity=0.4,
-        color_discrete_sequence=couleurs_filles_garcons
+        color_discrete_sequence=couleurs_filles_garcons,
+        category_orders={'sexe': ['F', 'M']}
     )
 
     # 2. Élèves avec moyennes < médiane par genre
@@ -557,7 +558,8 @@ Une meilleure collaboaration entre les équipes pédagogies pourrait constituer 
         labels={'sexe': 'Genre', 'count': 'Nombre de notes'},
         color='sexe',
         text='count',
-        color_discrete_sequence=couleurs_filles_garcons
+        color_discrete_sequence=couleurs_filles_garcons,
+        category_orders={'sexe': ['F', 'M']}
     )
 
     # 3. Élèves avec moyennes ≥ médiane par genre
@@ -570,7 +572,8 @@ Une meilleure collaboaration entre les équipes pédagogies pourrait constituer 
         labels={'sexe': 'Genre', 'count': 'Nombre de notes'},
         color='sexe',
         text='count',
-        color_discrete_sequence=couleurs_filles_garcons
+        color_discrete_sequence=couleurs_filles_garcons,
+        category_orders={'sexe': ['F', 'M']}
     )
 
     # Mise à jour des tracés
@@ -619,6 +622,7 @@ Une meilleure collaboaration entre les équipes pédagogies pourrait constituer 
         y=['F', 'M'],
         barmode='group',
         color_discrete_sequence=couleurs_filles_garcons,
+        category_orders={'sexe': ['F', 'M']},
         title='Comparaison des moyennes par matière et par genre'
     )
     # Mise à jour de la disposition pour supprimer l'étiquette de l'axe X
@@ -848,7 +852,8 @@ Une meilleure collaboaration entre les équipes pédagogies pourrait constituer 
             title="Décrochages par genre et matière",
             labels={'nombre_de_décrochages': 'Nombre de Décrochages', 'matiere': 'Matière', 'sexe': 'Sexe'},
             barmode='group',
-            color_discrete_sequence=[px.colors.qualitative.G10[3], px.colors.qualitative.G10[2]]
+            color_discrete_sequence=couleurs_filles_garcons,
+            category_orders={'sexe': ['F', 'M']}
         )
         st.plotly_chart(fig, use_container_width=True)
 
@@ -1090,7 +1095,7 @@ with tab3:
 
 
     # Assurer l'ordre des niveaux
-    ordre_niveaux = ['6e', '5e', '4e', 'Seconde', 'Première', 'Terminale']
+    ordre_niveaux = ['6e', '5e', '4e', '3e','Seconde', 'Première', 'Terminale']
     df_appreciationprofesseurs['niveau_de_classe'] = pd.Categorical(
         df_appreciationprofesseurs['niveau_de_classe'],
         categories=ordre_niveaux,
@@ -1159,7 +1164,7 @@ with tab3:
             title="Sentiment global : moyennne des scores",
             category_orders={"niveau_de_classe": ordre_niveaux},
             color_discrete_sequence=couleurs_filles_garcons
-        )
+            )
         st.plotly_chart(fig_4, use_container_width=True)
 
 
